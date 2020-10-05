@@ -1,0 +1,11 @@
+#----------------------------------------------------------------
+# Name        : NewEventSource.ps1
+# Version     : 1.00
+# Description : 新規イベントソースを作成するスクリプト。
+# Author      : rogasawara
+# Date        : 2020-01-25
+#----------------------------------------------------------------
+# 管理者権限で起動
+Start-Process -Verb runas
+# 新規イベントソースの作成
+New-EventLog -LogName Application -Source Write-EventLog.ps1
