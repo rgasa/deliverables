@@ -49,28 +49,28 @@ logger '[Start]'
 rtn_cd=${TRUE}
 
 # ファイルの存在チェック
-if [[ ! -e ${BASE_DIR}/${DIR_LIST_FILE} ]]; then
-  # 存在しない場合
-  rtn_cd=${FALSE}
-  logger "[Not Found ${DIR_LIST_FILE}]"
-  exit ${rtn_cd}
+if [[ ! -e "${BASE_DIR}/${DIR_LIST_FILE}" ]]; then
+    # 存在しない場合
+    rtn_cd=${FALSE}
+    logger "[Not Found "${DIR_LIST_FILE}"]"
+    exit ${rtn_cd}
 fi
 
 # ファイルの読み込み
 cat "${BASE_DIR}/${DIR_LIST_FILE}" | while read line
 do
-  # ディレクトリ作成
-  mkdir -p ${line}
+    # ディレクトリ作成
+    mkdir -p "${line}"
 
-  if [[ $? = 0 ]]; then
-    # ディレクトリ作成成功
-    logger "[Success mkdir ${line}]"
-  else
-    # ディレクトリ作成失敗
-    rtn_cd=${FALSE}
-    logger "[Faild mkdir ${line}]"
-    exit ${rtn_cd}
-  fi
+    if [[ $? = 0 ]]; then
+        # ディレクトリ作成成功
+        logger "[Success mkdir "${line}"]"
+    else
+        # ディレクトリ作成失敗
+        rtn_cd=${FALSE}
+        logger "[Faild mkdir "${line}"]"
+        exit ${rtn_cd}
+    fi
 done
 
 # 終了ログ出力
